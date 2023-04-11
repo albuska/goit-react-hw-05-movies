@@ -25,8 +25,8 @@ export const App = () => {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Route>
-        <GlobalStyle />
       </Routes>
+      <GlobalStyle />
     </Suspense>
   );
 };
