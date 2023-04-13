@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 
 export const StyledLink = styled(NavLink)`
-text-decoration: none;
-`
+  text-decoration: none;
+`;
 
 export const Title = styled.h1`
   margin-top: 20px;

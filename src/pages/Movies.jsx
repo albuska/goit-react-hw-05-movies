@@ -1,10 +1,11 @@
 import { SearchString } from '../components/SearchString/SearchString';
-import { useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 // import { useParams } from 'react-router-dom';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const productName = searchParams.get('title') ?? '';
+  console.log('🚀 ~ Movies ~ productName:', productName);
 
   const updateQueryString = title => {
     const nextParams = title !== '' ? { title } : {};
@@ -13,7 +14,8 @@ const Movies = () => {
 
   return (
     <div>
-          <SearchString value={productName} onChange={ updateQueryString} />
+      <SearchString value={productName} onChange={updateQueryString} />
+      <Outlet />
     </div>
   );
 };

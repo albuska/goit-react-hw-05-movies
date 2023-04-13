@@ -22,7 +22,7 @@ const SharedLayout = () => {
             </Logo>
             <nav>
               <StyledLink to="/">Home</StyledLink>
-              <StyledLink to="movies">Movies</StyledLink>
+              <StyledLink to="/movies">Movies</StyledLink>
             </nav>
           </OverlayHeader>
         </Container>
