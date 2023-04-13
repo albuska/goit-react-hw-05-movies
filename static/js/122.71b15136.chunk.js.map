@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/122.71b15136.chunk.js","mappings":"mLAAA,IAIA,EAJgB,WAEf,C","sources":["components/Reviews/Reviews.jsx"],"sourcesContent":["const Reviews = () => {\n\n}\n\nexport default Reviews; "],"names":[],"sourceRoot":""}
