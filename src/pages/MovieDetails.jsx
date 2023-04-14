@@ -1,29 +1,62 @@
 import { Link, Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Loader from '../components/Loader';
 import { useParams, useLocation } from 'react-router-dom';
 import { fetchDetailsOfMovie } from '../components/API/api';
 import ButtonGoBack from 'components/ButtonGoBack';
+import { useRef } from 'react';
+import defaultImage from '../images/defaultImage.jpg'
 
 const MovieDetails = () => {
-  const { id } = useParams();
-  console.log(id); 
-  const movie = fetchDetailsOfMovie(id); 
-  // fetchDetailsOfMovie(id).then(data => console.log(data)); 
-//   useEffect(() => {
-//  fetchDetailsOfMovie(id).then(result => console.log(result));
-//   }, [id])
- 
+  const [movieItem, setMovieItem] = useState([]);
+  const [listGenres, setListGenres] = useState([]);
+  const { movieId } = useParams();
+
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    fetchDetailsOfMovie(+movieId)
+      .then(item => {
+        setMovieItem(item);
+      })
+      .catch(error => console.log(error));
+  }, [movieId]);
+
   const location = useLocation();
-  const backLinkHref = location ?? "/movies";
-  console.log( backLinkHref)
+  console.log('🚀 ~ MovieDetails ~ location:', location);
+  const backLinkHref = location.state?.from ?? '/movies';
+  console.log(backLinkHref);
+
+  console.log(movieItem);
+
+
   return (
     <div>
       <ButtonGoBack to={backLinkHref}></ButtonGoBack>
-      <h1>Опис фільма</h1>
-      <h2>
-        Назва {movie.title} - {id}
-      </h2>
+      <div>
+        <img
+          src={
+            movieItem.poster_path === null
+              ? defaultImage
+              : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
+          }
+          alt={movieItem.title}
+          width="200"
+        />
+        <h4>
+          {movieItem.title} <span>({movieItem.release_date})</span>
+        </h4>
+        <p>User score: </p>
+        <p>Overview</p>
+        <p>{movieItem.overview}</p>
+        <p>Genres</p>
+        {/* <p>{ genres}</p> */}
+      </div>
       <ul>
         <li>
           <Link to="cast">Cast</Link>

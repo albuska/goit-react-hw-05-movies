@@ -31,16 +31,15 @@ const location = useLocation();
       <Title>Trending today</Title>
       <List>
         {popularMovies.map(
-          ({
-            id,
-            poster_path = defaultImage,
-            title = 'Anonymous',
-            vote_average,
-          }) => (
+          ({ id, poster_path, title = 'Anonymous', vote_average }) => (
             <Item key={id}>
               <StyledLink to={`movies/${id}`} state={{ from: location }}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                  src={
+                    poster_path === null
+                      ? defaultImage
+                      : `https://image.tmdb.org/t/p/w500/${poster_path}`
+                  }
                   alt={title}
                   width="200"
                 />
