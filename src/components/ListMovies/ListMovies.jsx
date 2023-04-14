@@ -38,7 +38,7 @@ const location = useLocation();
             vote_average,
           }) => (
             <Item key={id}>
-              <StyledLink to={`${id}`} state={{ from: location }}>
+              <StyledLink to={`movies/${id}`} state={{ from: location }}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                   alt={title}

@@ -15,7 +15,7 @@ const MovieDetails = () => {
 //   }, [id])
  
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/movies";
+  const backLinkHref = location ?? "/movies";
   console.log( backLinkHref)
   return (
     <div>
