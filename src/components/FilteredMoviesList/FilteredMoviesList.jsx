@@ -1,15 +1,16 @@
 import defaultImage from '../../images/defaultImage.jpg';
-import PropTypes from 'prop-types';
-import { StyledLink } from './FilteredMoviesList.styled'; 
+// import PropTypes from 'prop-types';
+import { StyledLink, List, Item } from './FilteredMoviesList.styled'; 
+import { useLocation } from 'react-router-dom';
 
 const FilteredMoviesList = ({ moviesList }) => {
-
+  const location = useLocation(); 
   return (
     <div>
-      <ul>
+      <List>
         {moviesList.map(result => (
-          <li key={result.id}>
-            <StyledLink to={`${result.id}`}>
+          <Item key={result.id}>
+            <StyledLink to={`${result.id}`} state={location}>
               <img
                 src={
                   result.poster_path === null
@@ -21,9 +22,9 @@ const FilteredMoviesList = ({ moviesList }) => {
               />
               <p>{result.title}</p>
             </StyledLink>
-          </li>
+          </Item>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
