@@ -5,12 +5,13 @@ import { useParams, useLocation } from 'react-router-dom';
 import { fetchDetailsOfMovie } from '../components/API/api';
 import ButtonGoBack from 'components/ButtonGoBack';
 import { useRef } from 'react';
-import defaultImage from '../images/defaultImage.jpg'
+import defaultImage from '../images/defaultImage.jpg';
 
 const MovieDetails = () => {
-  
+  const location = useLocation();
+
   const [movieItem, setMovieItem] = useState([]);
-  const [listGenres, setListGenres] = useState([]);
+  // const [listGenres, setListGenres] = useState([]);
   const { movieId } = useParams();
 
   const isFirstRender = useRef(true);
@@ -29,40 +30,30 @@ const MovieDetails = () => {
       .catch(error => console.log(error));
 
     return () => {
-      controller.abort(); 
-    }
+      controller.abort();
+    };
   }, [movieId]);
-
-  const location = useLocation();
-  console.log('🚀 ~ MovieDetails ~ location:', location);
-  const backLinkHref = location.state?.from ?? '/movies';
-  console.log(backLinkHref);
-
-  console.log(movieItem);
-
 
   return (
     <div>
-      <ButtonGoBack to={backLinkHref}></ButtonGoBack>
-      <div>
-        <img
-          src={
-            movieItem.poster_path === null
-              ? defaultImage
-              : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
-          }
-          alt={movieItem.title}
-          width="200"
-        />
-        <h4>
-          {movieItem.title} <span>({movieItem.release_date})</span>
-        </h4>
-        <p>User score: </p>
-        <p>Overview</p>
-        <p>{movieItem.overview}</p>
-        <p>Genres</p>
-        {/* <p>{ genres}</p> */}
-      </div>
+      <ButtonGoBack location={location}></ButtonGoBack>
+            <img
+              src={
+                movieItem.poster_path === null
+                  ? defaultImage
+                  : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
+              }
+              alt={movieItem.title}
+              width="200"
+            />
+            <h4>
+              {movieItem.title} <span>({movieItem.release_date})</span>
+            </h4>
+            <p>User score: </p>
+            <p>Overview</p>
+            <p>{movieItem.overview}</p>
+            <p>Genres</p>
+
       <ul>
         <li>
           <Link to="cast">Cast</Link>

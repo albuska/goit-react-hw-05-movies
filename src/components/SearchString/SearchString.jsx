@@ -1,13 +1,14 @@
 import { FcSearch } from 'react-icons/fc';
-import { InputBox, Input } from './SearchString.styled'; 
+import { InputBox, Input } from './SearchString.styled';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { SubmitButton } from './SearchString.styled'; 
+import { SubmitButton } from './SearchString.styled';
+import PropTypes from 'prop-types';
 
-export const SearchString = ({ onSubmit }) => { 
-  const [searchValue, setSearchValue] = useState('');  
+export const SearchString = ({ onSubmit }) => {
+  const [searchValue, setSearchValue] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     if (searchValue.trim() === '') {
@@ -17,29 +18,31 @@ export const SearchString = ({ onSubmit }) => {
       });
       return;
     }
-    if(searchValue )
-    onSubmit(searchValue); 
-    setSearchValue(''); 
-  }
+    if (searchValue) onSubmit(searchValue);
+    setSearchValue('');
+  };
 
   const handleInputChange = event => {
     setSearchValue(event.currentTarget.value.toLowerCase());
-  }
-  console.log(searchValue); 
+  };
 
-    return (
-      <InputBox>
-        <form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            value={searchValue}
-            onChange={handleInputChange}
-            placeholder="Enter the title of movie..."
-          />
-          <SubmitButton type="submit">
-            <FcSearch />
-          </SubmitButton>
-        </form>
-      </InputBox>
-    );
-}
+  return (
+    <InputBox>
+      <form onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          value={searchValue}
+          onChange={handleInputChange}
+          placeholder="Enter the title of movie..."
+        />
+        <SubmitButton type="submit">
+          <FcSearch />
+        </SubmitButton>
+      </form>
+    </InputBox>
+  );
+};
+
+SearchString.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

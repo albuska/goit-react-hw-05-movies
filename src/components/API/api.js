@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3';
+const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'a0d42475ca47464f434a1779823aa27d';
 
 export const fetchPopularMovies = async controller => {
   const response = await axios.get(
-    `${BASE_URL}/trending/all/day?api_key=${API_KEY}`,
+    `${BASE_URL}trending/all/day?api_key=${API_KEY}`,
     {
       signal: controller.signal,
     }
@@ -15,7 +15,7 @@ export const fetchPopularMovies = async controller => {
 
 export const fetchMovieSearchByKey = async (query, controller) => {
   const response = await axios.get(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`,
+    `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}`,
     {
       signal: controller.signal,
     }
@@ -25,7 +25,7 @@ export const fetchMovieSearchByKey = async (query, controller) => {
 
 export const fetchDetailsOfMovie = async (id, controller) => {
   const response = await axios.get(
-    `${BASE_URL}/movie/${id}?api_key=${API_KEY}`,
+    `${BASE_URL}movie/${id}?api_key=${API_KEY}`,
     {
       signal: controller.signal,
     }
@@ -35,7 +35,7 @@ export const fetchDetailsOfMovie = async (id, controller) => {
 
 export const fetchMovieCredits = async (id, controller) => {
   const response = await axios.get(
-    `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`,
+    `${BASE_URL}movie/${id}/credits?api_key=${API_KEY}`,
     {
       signal: controller.signal,
     }
@@ -45,7 +45,7 @@ export const fetchMovieCredits = async (id, controller) => {
 
 export const fetchMovieReviews = async (id, controller) => {
   const response = await axios.get(
-    `${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`,
+    `${BASE_URL}movie/${id}/reviews?api_key=${API_KEY}`,
     {
       signal: controller.signal,
     }

@@ -8,9 +8,7 @@ import toast from 'react-hot-toast';
 const Movies = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
   const movieName = searchParams.get('query') ?? '';
-  console.log(movieName);
 
   const [visibleMovies, setVisibleMovies] = useState([]);
 

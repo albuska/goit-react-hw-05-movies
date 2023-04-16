@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { fetchPopularMovies } from '../API/api';
 import {
-  StyledLink, List,
+  StyledLink,
+  List,
   Item,
   Title,
   TitleCard,

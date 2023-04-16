@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { fetchMovieCredits } from '../API/api';
 import { useEffect, useState } from 'react';
 import defaultImage from '../../images/defaultImage.jpg';
+import { List, Item } from './cast.styled'; 
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -21,9 +22,9 @@ const Cast = () => {
   console.log(actors);
   return (
     <div>
-      <ul>
+      <List>
         {actors.map(({ id, profile_path = defaultImage, name, character }) => (
-          <li key={id}>
+          <Item key={id}>
             <img
               src={profile_path === null ? defaultImage : `https://image.tmdb.org/t/p/w500/${profile_path}`}
               alt={name}
@@ -31,9 +32,9 @@ const Cast = () => {
             />
             <h5>{name}</h5>
             <p>Character: {character}</p>
-          </li>
+          </Item>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
