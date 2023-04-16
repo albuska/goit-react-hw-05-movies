@@ -1,6 +1,11 @@
 import defaultImage from '../../images/defaultImage.jpg';
 // import PropTypes from 'prop-types';
-import { StyledLink, List, Item } from './FilteredMoviesList.styled'; 
+import {
+  StyledLink,
+  List,
+  Item,
+  ParagraphBox, Paragraph
+} from './FilteredMoviesList.styled'; 
 import { useLocation } from 'react-router-dom';
 
 const FilteredMoviesList = ({ moviesList }) => {
@@ -20,7 +25,9 @@ const FilteredMoviesList = ({ moviesList }) => {
                 alt={result.title}
                 width="200"
               />
-              <p>{result.title}</p>
+              <ParagraphBox>
+                <Paragraph>{result.title}</Paragraph>
+              </ParagraphBox>
             </StyledLink>
           </Item>
         ))}

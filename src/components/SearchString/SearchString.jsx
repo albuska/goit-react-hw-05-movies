@@ -12,7 +12,7 @@ export const SearchString = ({ onSubmit }) => {
     event.preventDefault();
 
     if (searchValue.trim() === '') {
-      toast.error('Search title of movie', {
+      toast.error('Enter title of movie', {
         duration: 3000,
         position: 'top-right',
       });
