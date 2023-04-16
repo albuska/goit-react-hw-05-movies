@@ -11,17 +11,17 @@ export const Input = styled.input`
   margin: 0 auto;
   border: none;
   background: #b0c4de;
-  padding: 5px;
   border-radius: 3px;
   padding: 15px;
   outline: none;
+  font-size: 14px;
 `;
 
 export const SubmitButton = styled.button`
   position: absolute;
   display: block;
   width: 47px;
-  height: 48px;
+  height: 46px;
   background: #add8e6;
   cursor: pointer;
   border: none;

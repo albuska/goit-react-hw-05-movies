@@ -36,7 +36,7 @@ export const StyledLink = styled(NavLink)`
 
   &.active {
     color: white;
-    border-bottom: 1px solid #ffffff; 
+    border-bottom: 1px solid #ffffff;
   }
 
   :not(:last-child) {
@@ -54,6 +54,27 @@ export const Footer = styled.footer`
   background: #032541;
 `;
 
-export const Paragraph= styled.p`
-text-align: center;
-`
+export const Paragraph = styled.p`
+  text-align: center;
+  margin-top: 10px;
+`;
+
+export const NetworkList = styled.ul`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 0;
+  padding: 0;
+`;
+
+export const LinkNetworks = styled(NavLink)`
+  list-style: none;
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+    :hover {
+      fill: #00ced1;
+    }
+  }
+`;
