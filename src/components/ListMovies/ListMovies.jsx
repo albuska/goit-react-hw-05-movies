@@ -34,7 +34,7 @@ const ListMovies = () => {
         {popularMovies.map(
           ({ id, poster_path, title = 'Anonymous', vote_average }) => (
             <Item key={id}>
-              <StyledLink to={`movies/${id}`} state={{ from: location }}>
+              <StyledLink to={`movies/${id}`} state={ location }>
                 <img
                   src={
                     poster_path === null

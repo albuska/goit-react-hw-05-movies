@@ -37,22 +37,23 @@ const MovieDetails = () => {
   return (
     <div>
       <ButtonGoBack location={location}></ButtonGoBack>
-            <img
-              src={
-                movieItem.poster_path === null
-                  ? defaultImage
-                  : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
-              }
-              alt={movieItem.title}
-              width="200"
-            />
-            <h4>
-              {movieItem.title} <span>({movieItem.release_date})</span>
-            </h4>
-            <p>User score: </p>
-            <p>Overview</p>
-            <p>{movieItem.overview}</p>
-            <p>Genres</p>
+
+        <img
+          src={
+            movieItem.poster_path === null
+              ? defaultImage
+              : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
+          }
+          alt={movieItem.title}
+          width="200"
+        />
+        <h4>
+          {movieItem.title} <span>({movieItem.release_date})</span>
+        </h4>
+        <p>User score: </p>
+        <p>Overview</p>
+        <p>{movieItem.overview}</p>
+        <p>Genres</p>
 
       <ul>
         <li>
