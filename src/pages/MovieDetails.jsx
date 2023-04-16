@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import defaultImage from '../images/defaultImage.jpg'
 
 const MovieDetails = () => {
+  
   const [movieItem, setMovieItem] = useState([]);
   const [listGenres, setListGenres] = useState([]);
   const { movieId } = useParams();
@@ -19,12 +20,17 @@ const MovieDetails = () => {
       isFirstRender.current = false;
       return;
     }
+    const controller = new AbortController();
 
-    fetchDetailsOfMovie(+movieId)
+    fetchDetailsOfMovie(+movieId, controller)
       .then(item => {
         setMovieItem(item);
       })
       .catch(error => console.log(error));
+
+    return () => {
+      controller.abort(); 
+    }
   }, [movieId]);
 
   const location = useLocation();

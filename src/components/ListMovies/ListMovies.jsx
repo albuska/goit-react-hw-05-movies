@@ -11,7 +11,7 @@ import defaultImage from '../../images/defaultImage.jpg';
 import { useLocation } from 'react-router-dom';
 
 const ListMovies = () => {
-const location = useLocation();
+  const location = useLocation();
 
   const [popularMovies, setPopularMovies] = useState([]);
 

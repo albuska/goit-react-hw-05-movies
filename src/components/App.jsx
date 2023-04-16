@@ -3,6 +3,7 @@ import { GlobalStyle } from './GlobalStyle';
 import { lazy, Suspense } from 'react';
 import SharedLayout from './SharedLayout';
 import Loader from '../components/Loader';
+import { Toaster } from 'react-hot-toast';
 
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
@@ -26,6 +27,7 @@ export const App = () => {
         </Route>
       </Routes>
       <GlobalStyle />
+      <Toaster />
     </Suspense>
   );
 };

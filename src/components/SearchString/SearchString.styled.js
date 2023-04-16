@@ -3,25 +3,9 @@ import styled from "styled-components";
 export const InputBox = styled.div`
   position: relative;
   padding: 40px 0;
-
-  svg {
-    position: absolute;
-    width: 47px;
-    height: 47px;
-    right: 172px;
-    bottom: 40px;
-    display: block;
-    background: #add8e6;
-    cursor: pointer;
-
-    :hover {
-      background: #4682b4;
-    }
-  }
 `;
 
 export const Input = styled.input`
-  /* position: absolute; */
   width: 70%;
   display: block;
   margin: 0 auto;
@@ -33,3 +17,26 @@ export const Input = styled.input`
   outline: none;
 `;
 
+export const SubmitButton = styled.button`
+  position: absolute;
+  display: block;
+  width: 47px;
+  height: 48px;
+  background: #add8e6;
+  cursor: pointer;
+  border: none;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  bottom: 40px;
+  right: 172px;
+
+  :hover {
+    background: #4682b4;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+`;

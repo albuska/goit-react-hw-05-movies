@@ -2,11 +2,20 @@ import { useEffect, useState } from 'react';
 import { fetchMovieReviews } from '../API/api';
 import { useParams } from 'react-router-dom';
 
+ 
 const Reviews = () => {
+
     const { movieId } = useParams();
     const [reviews, setReviews] = useState([]); 
-useEffect(() => {
-   fetchMovieReviews(+movieId).then(({results}) => setReviews(results));
+  useEffect(() => {
+    const controller = new AbortController();
+   
+   fetchMovieReviews(+movieId, controller).then(({ results }) =>
+     setReviews(results)
+    );
+    return () => {
+      controller.abort(); 
+    }
 }, [movieId]);   
     
     console.log(reviews)
