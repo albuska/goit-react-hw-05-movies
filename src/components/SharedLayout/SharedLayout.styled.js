@@ -25,6 +25,7 @@ export const Logo = styled(NavLink)`
     display: block;
     width: 50px;
     height: 50px;
+    cursor: pointer;
   }
 `;
 
