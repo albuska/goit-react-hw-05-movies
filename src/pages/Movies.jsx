@@ -5,7 +5,7 @@ import FilteredMoviesList from '../components/FilteredMoviesList';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const Movies = () => {
+const Movies = async () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query') ?? '';
@@ -13,11 +13,12 @@ const Movies = () => {
   const [visibleMovies, setVisibleMovies] = useState([]);
 
   useEffect(() => {
+        // if (movieName === '') {
+        //   return;
+        // }
     const controller = new AbortController();
-    if (movieName === '') {
-      return;
-    }
-    fetchMovieSearchByKey(movieName.toLowerCase(), controller)
+
+   fetchMovieSearchByKey(movieName.toLowerCase(), controller)
       .then(({ results }) => {
         setVisibleMovies(results);
         if (results.length === 0) {
