@@ -21,7 +21,7 @@ const FilteredMoviesList = ({ moviesList }) => {
                 src={
                   result.poster_path === null
                     ? defaultImage
-                    : `https://image.tmdb.org/t/p/w500/${result.poster_path}`
+                    : `https://image.tmdb.org/t/p/w500${result.poster_path}`
                 }
                 alt={result.title}
                 width="200"

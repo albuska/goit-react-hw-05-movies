@@ -4,7 +4,6 @@ import Loader from '../components/Loader';
 import { useParams, useLocation } from 'react-router-dom';
 import { fetchDetailsOfMovie } from '../components/API/api';
 import ButtonGoBack from 'components/ButtonGoBack';
-import { useRef } from 'react';
 import defaultImage from '../images/defaultImage.jpg';
 import {
   ContainerBox,
@@ -23,11 +22,9 @@ const MovieDetails = () => {
   const [movieItem, setMovieItem] = useState([]);
   const { movieId } = useParams();
 
-  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    if (movieId === '') {   
       return;
     }
     const controller = new AbortController();

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchPopularMovies } from '../API/api'; 
+import { fetchPopularMovies } from '../API/api';
 import {
   StyledLink,
   List,
@@ -20,9 +20,10 @@ const ListMovies = () => {
     const controller = new AbortController();
     fetchPopularMovies(controller)
       .then(({ results }) => {
+        console.log(results);
         setPopularMovies(results);
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
 
     return () => {
       controller.abort();
@@ -41,7 +42,7 @@ const ListMovies = () => {
                   src={
                     poster_path === null
                       ? defaultImage
-                      : `https://image.tmdb.org/t/p/w500/${poster_path}`
+                      : `https://image.tmdb.org/t/p/w500${poster_path}`
                   }
                   alt={title}
                   width="200"

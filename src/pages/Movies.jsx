@@ -18,7 +18,7 @@ const Movies = () => {
         }
     const controller = new AbortController();
 
-   fetchMovieSearchByKey(movieName.toLowerCase(), controller)
+   fetchMovieSearchByKey(movieName, controller)
       .then(({ results }) => {
         setVisibleMovies(results);
         if (results.length === 0) {
@@ -29,6 +29,7 @@ const Movies = () => {
         }
       })
       .catch(error => console.log(error));
+    
     return () => {
       controller.abort(); 
     }
