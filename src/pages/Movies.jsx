@@ -5,7 +5,7 @@ import FilteredMoviesList from '../components/FilteredMoviesList';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const Movies = async () => {
+const Movies = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query') ?? '';
