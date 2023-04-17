@@ -39,7 +39,7 @@ const MovieDetails = () => {
     };
   }, [movieId]);
  
-  const userScore = Math.round(movieItem.vote_average);
+  const userScore = Math.round(movieItem.vote_average * 10);
   const date = new Date(movieItem.release_date);
   return (
     <div>
