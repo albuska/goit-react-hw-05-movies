@@ -29,7 +29,7 @@ const MovieDetails = () => {
     }
     const controller = new AbortController();
 
-    fetchDetailsOfMovie(+movieId, controller)
+    fetchDetailsOfMovie(movieId)
       .then(item => {
         setMovieItem(item);
       })
@@ -49,9 +49,9 @@ const MovieDetails = () => {
       <ContainerBox>
         <img
           src={
-            movieItem.poster_path === null
-              ? defaultImage
-              : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
+            movieItem.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
+              : defaultImage
           }
           alt={movieItem.title}
           width="200"
