@@ -1,5 +1,5 @@
 import defaultImage from '../../images/defaultImage.jpg';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {
   StyledLink,
   List,
@@ -39,12 +39,12 @@ const FilteredMoviesList = ({ moviesList }) => {
 
 export default FilteredMoviesList;
 
-FilteredMoviesList.propTypes = {
-  moviesList: PropTypes.object({
-    item: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      poster_path: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
+// FilteredMoviesList.propTypes = {
+//   moviesList: PropTypes.object({
+//     item: PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       poster_path: PropTypes.string.isRequired,
+//       title: PropTypes.string.isRequired,
+//     }).isRequired,
+//   }).isRequired,
+// };

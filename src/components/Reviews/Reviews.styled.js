@@ -11,3 +11,7 @@ export const Item = styled.li`
         margin-bottom: 15px;
     }
 `;
+
+export const MessageReviews = styled.p`
+margin-top: 20px;
+`

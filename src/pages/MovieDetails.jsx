@@ -42,7 +42,6 @@ const MovieDetails = () => {
       controller.abort();
     };
   }, [movieId]);
-  console.log(movieItem);
 
   const userScore = Math.round(movieItem.vote_average);
   const date = new Date(movieItem.release_date);

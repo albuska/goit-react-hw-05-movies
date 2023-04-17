@@ -17,7 +17,6 @@ const Cast = () => {
     };
   }, [movieId]);
 
-  console.log(actors);
   return (
     <div>
       <List>
