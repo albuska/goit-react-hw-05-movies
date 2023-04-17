@@ -19,7 +19,7 @@ export const OverlayHeader = styled.div`
   align-items: center;
 `;
 
-export const Logo = styled.span`
+export const Logo = styled(NavLink)`
   svg {
     fill: #ffffff;
     display: block;

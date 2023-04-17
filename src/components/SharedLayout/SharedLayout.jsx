@@ -22,7 +22,7 @@ const SharedLayout = () => {
       <Header>
         <Container>
           <OverlayHeader>
-            <Logo>
+            <Logo to="/">
               <GiFilmSpool />
             </Logo>
             <nav>
