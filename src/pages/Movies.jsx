@@ -13,9 +13,9 @@ const Movies = () => {
   const [visibleMovies, setVisibleMovies] = useState([]);
 
   useEffect(() => {
-        // if (movieName === '') {
-        //   return;
-        // }
+        if (movieName === '') {
+          return;
+        }
     const controller = new AbortController();
 
    fetchMovieSearchByKey(movieName.toLowerCase(), controller)
