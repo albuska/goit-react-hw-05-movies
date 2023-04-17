@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchPopularMovies } from '../API/api';
+import Loader from '../../components/Loader'; 
 import {
   StyledLink,
   List,
@@ -15,12 +16,18 @@ const ListMovies = () => {
   const location = useLocation();
 
   const [popularMovies, setPopularMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchPopularMovies(controller).then(({ results }) => {
-      setPopularMovies(results);
-    });
+
+    setLoading(true);
+    fetchPopularMovies(controller)
+      .then(({ results }) => {
+        setPopularMovies(results);
+      })
+      .catch(error => console.log(error))
+      .finally(() => setLoading(false));
 
     return () => {
       controller.abort();
@@ -30,6 +37,11 @@ const ListMovies = () => {
   return (
     <div>
       <Title>Trending today</Title>
+      {loading && (
+        <div>
+          <Loader />
+        </div>
+      )}
       <List>
         {popularMovies.map(
           ({ id, poster_path, title = 'Anonymous', vote_average }) => (
