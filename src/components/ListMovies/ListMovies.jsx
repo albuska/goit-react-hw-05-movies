@@ -34,7 +34,7 @@ const ListMovies = () => {
         {popularMovies.map(
           ({ id, poster_path, title = 'Anonymous', vote_average }) => (
             <Item key={id}>
-              <StyledLink to={`movies/${id}`} state={ location }>
+              <StyledLink to={`movies/${id}`} state={location}>
                 <img
                   src={
                     poster_path === null
@@ -46,7 +46,7 @@ const ListMovies = () => {
                 />
                 <TitleCard>{title}</TitleCard>
                 <RatingCard>
-                  <b>Rating:</b> {vote_average}
+                  <b>Rating:</b> {vote_average.toFixed(1)}
                 </RatingCard>
               </StyledLink>
             </Item>

@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import Loader from '../components/Loader';
 import { useParams, useLocation } from 'react-router-dom';
@@ -6,12 +6,21 @@ import { fetchDetailsOfMovie } from '../components/API/api';
 import ButtonGoBack from 'components/ButtonGoBack';
 import { useRef } from 'react';
 import defaultImage from '../images/defaultImage.jpg';
+import {
+  ContainerBox,
+  Title,
+  ContainerDescription,
+  Overlay,
+  Item,
+  List,
+  NavLinkStyled,
+  GenresParagraph,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const location = useLocation();
 
   const [movieItem, setMovieItem] = useState([]);
-  // const [listGenres, setListGenres] = useState([]);
   const { movieId } = useParams();
 
   const isFirstRender = useRef(true);
@@ -33,40 +42,57 @@ const MovieDetails = () => {
       controller.abort();
     };
   }, [movieId]);
+  console.log(movieItem);
 
+  const userScore = Math.round(movieItem.vote_average);
+  const date = new Date(movieItem.release_date);
   return (
     <div>
       <ButtonGoBack location={location}></ButtonGoBack>
 
-      <img
-        src={
-          movieItem.poster_path === null
-            ? defaultImage
-            : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
-        }
-        alt={movieItem.title}
-        width="200"
-      />
-      <h4>
-        {movieItem.title} <span>({movieItem.release_date})</span>
-      </h4>
-      <p>User score: </p>
-      <p>Overview</p>
-      <p>{movieItem.overview}</p>
-      <p>Genres</p>
-
-      <ul>
-        <li>
-          <Link to="cast" state={location.state}>
+      <ContainerBox>
+        <img
+          src={
+            movieItem.poster_path === null
+              ? defaultImage
+              : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
+          }
+          alt={movieItem.title}
+          width="200"
+        />
+        <ContainerDescription>
+          <Title>
+            {movieItem.title} <span>({date.getFullYear()})</span>
+          </Title>
+          <Overlay>
+            <b>User score:</b> {userScore}%
+          </Overlay>
+          <Overlay>
+            <b>Overview</b>
+          </Overlay>
+          <Overlay>{movieItem.overview}</Overlay>
+          <Overlay>
+            <b>Genres</b>
+            <GenresParagraph>
+              {movieItem.genres &&
+                movieItem.genres.map(genre => genre.name).join(', ')}
+            </GenresParagraph>
+          </Overlay>
+        </ContainerDescription>
+      </ContainerBox>
+      <h4>Additional information</h4>
+      <List>
+        <Item>
+          <NavLinkStyled to="cast" state={location.state}>
             Cast
-          </Link>
-        </li>
-        <li>
-          <Link to="reviews" state={location.state}>
+          </NavLinkStyled>
+        </Item>
+        <Item>
+          <NavLinkStyled to="reviews" state={location.state}>
             Reviews
-          </Link>
-        </li>
-      </ul>
+          </NavLinkStyled>
+        </Item>
+      </List>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
