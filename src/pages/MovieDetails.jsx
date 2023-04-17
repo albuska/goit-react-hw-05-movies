@@ -52,7 +52,7 @@ const MovieDetails = () => {
       <ContainerBox>
         <img
           src={
-            movieItem.poster_path === undefined
+            movieItem.poster_path === null
               ? defaultImage
               : `https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`
           }
