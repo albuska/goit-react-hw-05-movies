@@ -17,15 +17,17 @@ const Movies = () => {
     if (movieName === '') {
       return;
     }
-    fetchMovieSearchByKey(movieName.toLowerCase(), controller).then(({ results }) => {
-      setVisibleMovies(results);
+    fetchMovieSearchByKey(movieName.toLowerCase(), controller)
+      .then(({ results }) => {
+        setVisibleMovies(results);
         if (results.length === 0) {
-           toast.error(`Oops...No such title found ${movieName}`, {
-             duration: 3000,
-             position: 'top-right',
-           });
+          toast.error(`Oops...No such title found ${movieName}`, {
+            duration: 3000,
+            position: 'top-right',
+          });
         }
-    })
+      })
+      .catch(error => console.log(error));
     return () => {
       controller.abort(); 
     }

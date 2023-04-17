@@ -10,7 +10,9 @@ const Cast = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchMovieCredits(+movieId, controller).then(({ cast }) => setActors(cast));
+    fetchMovieCredits(+movieId, controller)
+      .then(({ cast }) => setActors(cast))
+      .catch(error => console.log(error));
 
     return () => {
       controller.abort();

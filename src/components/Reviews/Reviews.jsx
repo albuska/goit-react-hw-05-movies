@@ -11,7 +11,7 @@ const Reviews = () => {
 
     fetchMovieReviews(+movieId, controller).then(({ results }) =>
       setReviews(results)
-    );
+    ).catch(error => console.log(error));
     return () => {
       controller.abort();
     };
