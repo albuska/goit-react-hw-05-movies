@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import ListMovies from '../components/ListMovies/ListMovies';
 import image from '../images/poster.jpg';
 
