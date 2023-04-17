@@ -1,8 +1,8 @@
 import { StyledNavLink } from './ButtonGoBack.styled';
 import { BiArrowBack } from 'react-icons/bi';
+import PropTypes from 'prop-types';
 
-const ButtonGoBack = ({location}) => {
-console.log(location)
+const ButtonGoBack = ({ location }) => {
   return (
     <div>
       <StyledNavLink to={location.state}>
@@ -14,3 +14,7 @@ console.log(location)
 };
 
 export default ButtonGoBack;
+
+ButtonGoBack.propTypes = {
+  location: PropTypes.object.isRequired,
+};

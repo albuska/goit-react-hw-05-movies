@@ -37,5 +37,5 @@ export const ParagraphBox = styled.div`
 export const Paragraph = styled.p`
   font-size: 16px;
   font-weight: 700;
- text-align: center;
+  text-align: center;
 `;
