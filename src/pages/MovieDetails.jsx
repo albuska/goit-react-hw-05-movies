@@ -22,14 +22,13 @@ const MovieDetails = () => {
   const [movieItem, setMovieItem] = useState([]);
   const { movieId } = useParams();
 
-
   useEffect(() => {
-    if (movieId === '') {   
+    if (movieId === '') {
       return;
     }
     const controller = new AbortController();
 
-    fetchDetailsOfMovie(movieId)
+    fetchDetailsOfMovie(movieId, controller)
       .then(item => {
         setMovieItem(item);
       })
@@ -39,7 +38,7 @@ const MovieDetails = () => {
       controller.abort();
     };
   }, [movieId]);
-
+ 
   const userScore = Math.round(movieItem.vote_average);
   const date = new Date(movieItem.release_date);
   return (

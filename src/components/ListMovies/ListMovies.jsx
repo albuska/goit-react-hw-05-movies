@@ -18,9 +18,8 @@ const ListMovies = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchPopularMovies()
+    fetchPopularMovies(controller)
       .then(({ results }) => {
-        console.log(results);
         setPopularMovies(results);
       })
       .catch(error => console.log(error));
@@ -35,12 +34,14 @@ const ListMovies = () => {
       <Title>Trending today</Title>
       <List>
         {popularMovies.map(
-          ({ id, poster_path, title = 'Anonymous', vote_average }) =>
+          ({ id, poster_path, title = 'Anonymous', vote_average }) => (
             <Item key={id}>
               <StyledLink to={`movies/${id}`} state={location}>
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w500${poster_path}`
+                    poster_path
+                      ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                      : defaultImage
                   }
                   alt={title}
                   width="200"
@@ -51,6 +52,7 @@ const ListMovies = () => {
                 </RatingCard>
               </StyledLink>
             </Item>
+          )
         )}
       </List>
     </div>
