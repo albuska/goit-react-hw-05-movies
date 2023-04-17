@@ -12,7 +12,7 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 const Cast = lazy(() => import('../components/Cast'));
 const Reviews = lazy(() => import('../components/Reviews'));
 
-export const App = () => {
+const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
@@ -31,3 +31,5 @@ export const App = () => {
     </Suspense>
   );
 };
+
+export default App; 
