@@ -22,8 +22,8 @@ const App = () => {
           <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
-            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
       <GlobalStyle />

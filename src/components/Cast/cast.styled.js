@@ -22,3 +22,7 @@ export const Image = styled.img`
   width: 100px;
   height: auto;
 `;
+
+export const MessageActors = styled.p`
+  margin-top: 20px;
+`;
