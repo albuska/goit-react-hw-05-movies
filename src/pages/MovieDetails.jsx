@@ -43,7 +43,7 @@ const MovieDetails = () => {
   const date = new Date(movieItem.release_date);
   return (
     <div>
-      <ButtonGoBack location={location}></ButtonGoBack>
+      <ButtonGoBack location={location ?? '/'}></ButtonGoBack>
 
       <ContainerBox>
         <img
